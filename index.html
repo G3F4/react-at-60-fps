@@ -29,7 +29,7 @@
         }
         .slide {
             padding-top: 40px;
-            background-color: #ede4ce;
+            background-color: ##FFF;
         }
         .slide .shout {
             font-size: 72px;
@@ -61,16 +61,16 @@
     </header>
 
     <!-- SLIDE #1 -->
-    <section class="slide front-page">
+    <section style="padding-right: 40px;" class="slide front-page">
         <div class="details">
             <!-- 1. Avatar -->
             <img src="pictures/avatar.jpg" alt="Speaker"/>
 
             <!-- 2. Speaker -->
-            <h2>Kamil Grabek</h2>
+            <h2 style="display: inline;">Kamil Grabek</h2>
 
             <!-- 3. Presentation title -->
-            <h2><strong>"React at 60 FPS - Optimizing React"</strong></h2>
+            <h2 style="padding-top: 30px;"><strong>"React at 60 FPS - Optimizing React"</strong></h2>
 
             <!-- 4. Presentation date -->
             <h2>2017-09-30</h2>
@@ -81,7 +81,7 @@
     </section>
 
     <!-- SLIDE #2 -->
-    <section class="slide" itemscope style="font-weight: bold;">
+<!--    <section class="slide" itemscope style="font-weight: bold;">
         <div>
             <h2>Who am I?</h2>
 
@@ -97,7 +97,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <!-- SLIDE #3 -->
     <section class="slide prism">
@@ -183,18 +183,17 @@
     <!-- SLIDE #8 -->
     <section class="slide">
         <h2>USING CONSOLE IN RENDER METHOD</h2>
-        <pre style="font-size: 22px;width: 100%;" class="language-javascript">
-            <code style="width: 100%;">
-              class MyComponent extends React.Component {
-                ...
-                render() {
-                  console.log(`Rendering ${this.constructor.name}`);
-                  return (
-                    < div>...< /div>
-                  );
-                }
-                ...
-              }
+        <pre style="height: 75%;font-size: 22px;width: 100%;" class="language-javascript">
+            <code style="width: 100%;">    class MyComponent extends React.Component {
+    ...
+    render() {
+      console.log(`Rendering ${this.constructor.name}`);
+      return (
+        < div>...< /div>
+      );
+    }
+    ...
+    }
             </code>
         </pre>
     </section>
@@ -221,7 +220,7 @@
     <!-- SLIDE #11 -->
     <section class="slide">
       <h2>?REACT_PERF + DEV TOOLS TIMELINE</h2>
-      <ul style="font-size: 30px;font-weight: bold; margin-top: 0px;">
+      <ul style="margin-bottom: 0px;font-size: 30px;font-weight: bold; margin-top: 0px;">
         <li class="next">SINCE REACT v15.4.0. USE: http://localhost:3000/?react_perf</li>
       </ul>
       <img class="next" style="margin-left: 80px" src="pictures/react-perf.png">
@@ -266,16 +265,15 @@
             </div>
             <div class="right_col" style="width: 60%;">
                 <pre style="font-size: 22px;width: 100%;" class="language-javascript">
-                    <code style="width: 100%;">
-                      < div>
-                      {invitations.map(invitation => (
-                        < div
-                          key={invitation.id}
-                          < div>{invitation.number}< /div>
-                          ...
-                        />
-                      ))}
-                      < /div>
+                    <code style="width: 100%;"> < div>
+ {invitations.map(invitation => (
+   < div
+    key={invitation.id}
+    < div>{invitation.number}< /div>
+    ...
+   />
+ ))}
+ < /div>
                   </code>
                 </pre>
             </div>
@@ -288,15 +286,14 @@
         <div class="wrap" style="margin-top: 30px;">
             <div class="left_col" style="width: 65%;">
               <pre style="font-size: 22px;width: 100%;" class="language-javascript">
-                <code style="width: 100%;">
-                  < div>
-                  {invitations.map(invitation => (
-                    < Invitation
-                      key={invitation.id}
-                      {...getInvitationProps(invitation)}
-                    />
-                  ))}
-                  < /div>
+                <code style="width: 100%;"> < div>
+ {invitations.map(invitation => (
+   < Invitation
+     key={invitation.id}
+     {...getInvitationProps(invitation)}
+   />
+ ))}
+ < /div>
                 </code>
               </pre>
             </div>
@@ -328,17 +325,20 @@
     <!-- SLIDE #17 -->
     <section class="slide">
         <h2>shouldComponentUpdate</h2>
-        <pre style="font-size: 22px;width: 100%;" class="language-javascript">
-            <code style="width: 100%;">
-              class MyComponent extends React.Component {
-                ...
-                shouldComponentUpdate(nextPros, nextState) {
-                  const hasPropsChanged = shallowEqual(nextProps, this.props);
-                  const hasStateChanged = shallowEqual(nextState, this.state);
-                  return !hasPropsChanged && !hasStateChanged;
-                }
-                ...
-              }
+        <pre style="height: 83%;font-size: 22px;width: 100%;" class="language-javascript">
+            <code style="width: 100%;"> class MyComponent extends React.Component {
+   ...
+   shouldComponentUpdate(nextPros, nextState) {
+     const hasPropsChanged = shallowEqual(
+                   nextProps,
+                   this.props);
+     const hasStateChanged = shallowEqual(
+                   nextState,
+                   this.state);
+     return !hasPropsChanged && !hasStateChanged;
+   }
+   ...
+ }
             </code>
         </pre>
     </section>
@@ -423,12 +423,11 @@
             <li class="next">SYNTACTIC SUGAR</li>
         </ul>
         <pre style="font-size: 24px;width: 100%;" class="next language-javascript">
-            <code style="width: 100%;">
-                import update from 'immutability-helper';
-                const newData = update(myData, {
-                  x: { y: {z: { $set: 7 } } },
-                  a: { b: { $push: [9] } }
-                });
+            <code style="width: 100%;"> import update from 'immutability-helper';
+  const newData = update(myData, {
+    x: { y: {z: { $set: 7 } } },
+    a: { b: { $push: [9] } }
+  });
             </code>
         </pre>
     </section>
@@ -467,7 +466,7 @@
         <div class="wrap">
           <div class="left_col" style="width: 70%;">
             <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
-                <li class="next">FUNCTION WITH MEMORY</li>
+                <li class="next">FUNCTION WITH CACHE</li>
                 <li class="next">TIME-SPACE TRADE-OFF</li>
                 <li class="next">REFERENTIAL TRANSPARENCY(PURE)</li>
             </ul>
@@ -482,15 +481,16 @@
     <section class="slide">
       <h2>MOIZE</h2>
       <h3>https://www.npmjs.com/package/moize</h3>
-      <pre style="font-size: 24px;width: 100%;" class="next language-javascript">
-        <code style="width: 100%;">
-            import moize from 'moize';
-            const method = (a, b) => {
-              return a + b;
-            };
-            const memoized = moize(method);
-            memoized(2, 4); // 6
-            memoized(2, 4); // 6, pulled from cache
+      <pre style="height: 74%;font-size: 24px;width: 100%;" class="next language-javascript">
+        <code style="width: 100%;">  import moize from 'moize';
+
+  const method = (a, b) => {
+    return a + b;
+  };
+
+  const memoized = moize(method);
+  memoized(2, 4); // 6
+  memoized(2, 4); // 6, pulled from cache
         </code>
       </pre>
     </section>
@@ -501,17 +501,17 @@
       <h2>MOIZE AND REACT</h2>
       <div class="wrap">
         <div class="left_col" style="width: 70%;">
-          <pre style="font-size: 24px;width: 100%;" class="next language-javascript">
-            <code style="width: 100%;">
-                import moize from 'moize';
-                const Foo = ({bar, baz}) => {
-                  return (
-                    < div>
-                      {bar} {baz}
-                    < /div>
-                  );
-                };
-                export default moize.react(Foo);
+          <pre style="height: 118%;font-size: 24px;width: 100%;" class="next language-javascript">
+            <code style="width: 100%;">  import moize from 'moize';
+
+  const Foo = ({bar, baz}) => {
+    return (
+      < div>
+        {bar} {baz}
+      < /div>
+    );
+  };
+  export default moize.react(Foo);
             </code>
           </pre>
         </div>
@@ -523,21 +523,29 @@
 
     <section class="slide">
         <h2 style="display: none;">APPLICATION WITH SCU AND MEMOIZATION</h2>
-        <div style="text-align: center; font-size: 100px;"><a style="color:#000;" href="http://g3f4.xyz/optimizing-react/memoized/">APPLICATION WITH SCU AND MEMOIZATION</a></div>
+        <div style="margin-top: -40px;text-align: center; font-size: 100px;"><a style="color:#000;" href="http://g3f4.xyz/optimizing-react/memoized/">APPLICATION WITH SCU AND MEMOIZATION</a></div>
     </section>
 
     <!-- SLIDE #28 -->
     <section class="slide">
         <h2>WHAT MORE?</h2>
         <div class="wrap">
-          <div class="left_col" style="width: 70%;">
+          <div class="left_col" style="width: 74%;">
                 <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
                   <li class="next">REMEMBER ABOUT PRODUCTION BUILD</li>
                   <li class="next">WEBPACK PLUGINS</li>
+                  <ul style="font-size: 30px;font-weight: bold;">
+                    <li class="next">REUSABLE CONSTANT REACT ELEMENTS</li>
+                    <li class="next">INLINE REACT ELEMENTS</li>
+                  </ul>
                   <li class="next">REACT ALTERNATIVES</li>
+                  <ul style="font-size: 30px;font-weight: bold;">
+                    <li class="next">PREACT (3kb)</li>
+                    <li class="next">INFERNO (9kb)</li>
+                  </ul>
                 </ul>
             </div>
-            <div class="right_col" style="width: 30%;">
+            <div class="right_col" style="width: 26%;">
                 <img style="width: 300px; height: 300px;" src="pictures/icons/brainbulb.png">
             </div>
         </div>
@@ -563,13 +571,16 @@
     <!-- SLIDE #RESOURCES -->
     <section class="slide">
         <h2>RESOURCES</h2>
-        <ul>
-            <li>http://g3f4.xyz/optimizing-react/</li>
-            <li>https://github.com/G3F4/optimizing-react</li>
+        <ul style="font-size: 20px;">
+            <li>http://g3f4.xyz/optimizing-react/ (Demo app)</li>
+            <li>https://github.com/G3F4/optimizing-react (Demo code)</li>
             <li>https://www.npmjs.com/package/immutability-helper</li>
             <li>https://www.npmjs.com/package/moize</li>
-            <li>https://facebook.github.io/react/docs/</li>
+            <li>https://facebook.github.io/react/docs/ (React documentation)</li>
             <li>https://www.accelebrate.com/blog/the-real-benefits-of-the-virtual-dom-in-react-js/</li>
+            <li>https://github.com/facebook/react/issues/3228 (Inline ReactElements)</li>
+            <li>https://github.com/facebook/react/issues/3226 (Reuse Constant Value Types like ReactElement)</li>
+            <li>https://github.com/infernojs/inferno</li>
         </ul>
     </section>
 
