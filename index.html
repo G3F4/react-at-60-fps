@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>React at 60 FPS - Optimizing React</title>
+
+    <meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+
+    <style type="text/css">
+        .wrap {
+            width:100%;
+            margin:0 auto;
+            height: 70%;
+        }
+        .left_col {
+            float:left;
+            width:50%;
+            height: 100%;
+        }
+        .right_col {
+            float:right;
+            width:50%;
+            height: 100%;
+        }
+        .slide .shout {
+            font-size: 140px;
+        }
+        .slide {
+            padding-top: 40px;
+            background-color: #ede4ce;
+        }
+        .slide .shout {
+            font-size: 72px;
+            font-weight: bold;
+        }
+        :not(pre) > code[class*="language-"], pre[class*="language-"] {
+            background: #f5f2f0;
+            border: solid;
+        }
+        .slide b, .slide strong {
+            color: #bd1110;
+        }
+        .slide p.note {
+            color: #12335f;
+        }
+        .slide h2 {
+            color: #393535;
+            font-weight: bold;
+            font-family: firalight, sans-serif;
+        }
+        .slide::after {
+            display: none;
+        }
+    </style>
+</head>
+<body class="shower list">
+    <header class="caption">
+        <h1>React at 60 FPS - Optimizing React</h1>
+    </header>
+
+    <!-- SLIDE #1 -->
+    <section class="slide front-page">
+        <div class="details">
+            <!-- 1. Avatar -->
+            <img src="pictures/avatar.jpg" alt="Speaker"/>
+
+            <!-- 2. Speaker -->
+            <h2>Kamil Grabek</h2>
+
+            <!-- 3. Presentation title -->
+            <h2><strong>"React at 60 FPS - Optimizing React"</strong></h2>
+
+            <!-- 4. Presentation date -->
+            <h2>2017-09-30</h2>
+
+            <!-- 5. Contact the speaker -->
+            <h2>kamil.grabek@gmail.com</h2>
+        </div>
+    </section>
+
+    <!-- SLIDE #2 -->
+    <section class="slide" itemscope style="font-weight: bold;">
+        <div>
+            <h2>Who am I?</h2>
+
+            <h3 itemprop="jobTitle">Front-end developer</h3>
+
+            <p>
+                <span itemprop="knows">Tech freak, sci-fi lover, astro maniac.</span><br/>
+            </p>
+
+            <div class="wrap">
+                <div class="left_col">
+                    <p class="note">"Kiedy życie zaskoczy,<br />pytam co ma dla mnie jeszcze"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #3 -->
+    <section class="slide prism">
+        <h2 class="shout">
+          <div style="font-size: 100px;margin-bottom: 60px;">REACT AT 60 FPS</div>
+          <div style="margin-top: -50px;">
+            <img style="width: 250px; height: 250px;" src="pictures/icons/speed.png">
+          </div>
+          <div style="font-size: 72px;">OPTIMIZING REACT</div>
+        </h2>
+    </section>
+
+    <!-- SLIDE #4 -->
+    <section class="slide">
+        <h2 style="font-size: 48px; font-weight: 900">IS REACT FAST OUT OF THE BOX?</h2>
+        <div class="wrap">
+            <div class="left_col" style="width: 70%;">
+              <ul style="font-size: 35px;font-weight: bold; margin-top: 15px;">
+                <li class="next">VIRTUAL DOM</li>
+                <li class="next">SLOWER THAN NATIVE JAVASCRIPT?</li>
+                <li class="next">SLOWER THAN JQUERY?</li>
+                <li class="next">MATTER OF UPDATES</li>
+              </ul>
+            </div>
+            <div class="right_col" style="width: 30%; margin-top: 50px;">
+              <img style="width: 300px; height: 300px;" src="pictures/box.png">
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2 style="display: none;">UNOPTIMIZED APPLICATION</h2>
+        <div style="text-align: center; font-size: 100px;"><a style="color:#000;" href="http://g3f4.xyz/optimizing-react/unoptimized/">UNOPTIMIZED APPLICATION</a></div>
+    </section>
+
+    <!-- SLIDE #5 -->
+    <section class="slide">
+        <h2>WHAT IS OUR GOAL OPTIMIZATION</h2>
+        <div class="wrap">
+            <div class="left_col" style="width: 40%;">
+                <img style="width: 300px; height: 300px;" src="pictures/icons/goal.png">
+            </div>
+            <div class="right_col" style="width: 60%;">
+                <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
+                    <li class="next">FLUID ANIMATIONS</li>
+                    <li class="next">FAST FORMS</li>
+                    <li class="next">60 FPS</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #6 -->
+    <section class="slide">
+        <h2>WHEN START OPTIMIZATION</h2>
+        <div class="wrap">
+          <div class="left_col" style="width: 70%;">
+                <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
+                    <li class="next">NOT AT THE BEGINNING</li>
+                    <li class="next">WHEN SLOWER DEVICES MATTER</li>
+                    <li class="next">ENCOUNTERING BOTTLE NECKS</li>
+                </ul>
+            </div>
+            <div class="right_col" style="width: 30%;">
+                <img style="width: 300px; height: 300px;" src="pictures/icons/start.png">
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #7 -->
+    <section class="slide">
+        <h2 style="display: none;">DIAGNOSTICS</h2>
+        <div class="wrap">
+            <div class="left_col" style="width: 45%;margin-top: 50px;">
+                <img style="width: 300px;height: 300px;" src="pictures/icons/stethoscope.png">
+            </div>
+            <div class="right_col" style="width: 55%;">
+                <div style="font-size: 72px;font-weight: bold;margin-top: 150px;">DIAGNOSTICS</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #8 -->
+    <section class="slide">
+        <h2>USING CONSOLE IN RENDER METHOD</h2>
+        <pre style="font-size: 22px;width: 100%;" class="language-javascript">
+            <code style="width: 100%;">
+              class MyComponent extends React.Component {
+                ...
+                render() {
+                  console.log(`Rendering ${this.constructor.name}`);
+                  return (
+                    < div>...< /div>
+                  );
+                }
+                ...
+              }
+            </code>
+        </pre>
+    </section>
+
+    <!-- SLIDE #9 -->
+    <section class="slide">
+        <h2>WHY-DID-YOU-UPDATE</h2>
+        <img style="" src="pictures/why-did-you-update.png">
+        <h3>https://github.com/garbles/why-did-you-update</h3>
+    </section>
+
+      <!-- SLIDE #10 -->
+    <section class="slide" style="padding-top: 40px;">
+        <h2>REACT PERFORMANCE TOOLS</h2>
+        <h3>WASTED OPERATIONS</h3>
+        <img style="zoom: 1.2;" src="pictures/perf-wasted.png">
+        <h3>TIME SPENT PROCESSING COMPONENTS</h3>
+        <img style="zoom: 1.2;" src="pictures/perf-inclusive.png">
+        <h3>DOM OPERATIONS PERFORMED</h3>
+        <img style="zoom: 1.2;" src="pictures/perf-dom.png">
+        <h3>https://facebook.github.io/react/docs/perf.html</h3>
+    </section>
+
+    <!-- SLIDE #11 -->
+    <section class="slide">
+      <h2>?REACT_PERF + DEV TOOLS TIMELINE</h2>
+      <ul style="font-size: 30px;font-weight: bold; margin-top: 0px;">
+        <li class="next">SINCE REACT v15.4.0. USE: http://localhost:3000/?react_perf</li>
+      </ul>
+      <img class="next" style="margin-left: 80px" src="pictures/react-perf.png">
+    </section>
+
+    <!-- SLIDE #12 -->
+    <section class="slide" style="padding-top: 150px;">
+        <h2 style="display: none;">COMPOSITION</h2>
+        <div class="wrap">
+            <div class="left_col" style="width: 45%;">
+                <img style="width: 300px;height: 300px;" src="pictures/composition.png">
+            </div>
+            <div class="right_col" style="width: 55%;">
+                <div style="font-size: 72px;font-weight: bold;margin-top: 100px;">COMPOSITION</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #13 -->
+    <section class="slide">
+        <h2>JSX AND COMPONENTS</h2>
+        <div class="wrap">
+          <div class="left_col" style="width: 70%;">
+                <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
+                    <li class="next">CODE READABILITY</li>
+                    <li class="next">LIFECYCLE</li>
+                    <li class="next">CONTROLLING RENDER TREE</li>
+                </ul>
+            </div>
+            <div class="right_col" style="width: 30%;">
+                <img style="width: 300px; height: 300px;" src="pictures/icons/component.png">
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #14 -->
+    <section class="slide" style="padding-top: 30px;">
+      <h2>MAKING TEMPLATES WRONG WAY</h2>
+        <div class="wrap" style="margin-top: 30px;">
+            <div class="left_col" style="width: 40%; margin-top: 50px;">
+                <img style="width: 300px;height: 300px;margin-top: 40px;" src="pictures/icons/bad.png">
+            </div>
+            <div class="right_col" style="width: 60%;">
+                <pre style="font-size: 22px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                      < div>
+                      {invitations.map(invitation => (
+                        < div
+                          key={invitation.id}
+                          < div>{invitation.number}< /div>
+                          ...
+                        />
+                      ))}
+                      < /div>
+                  </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #15 -->
+    <section class="slide" style="padding-top: 30px;">
+      <h2>MAKING TEMPLATES GOOD WAY</h2>
+        <div class="wrap" style="margin-top: 30px;">
+            <div class="left_col" style="width: 65%;">
+              <pre style="font-size: 22px;width: 100%;" class="language-javascript">
+                <code style="width: 100%;">
+                  < div>
+                  {invitations.map(invitation => (
+                    < Invitation
+                      key={invitation.id}
+                      {...getInvitationProps(invitation)}
+                    />
+                  ))}
+                  < /div>
+                </code>
+              </pre>
+            </div>
+            <div class="right_col" style="width: 35%; padding-left: 30px;">
+              <img style="width: 300px;height: 300px;margin-top: 40px;" src="pictures/icons/good.png">
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #16 -->
+    <section class="slide">
+        <h2>LIFECYCLE - UPDATING</h2>
+        <div class="wrap">
+          <div class="left_col" style="width: 60%;">
+                <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
+                    <li>componentWillReceiveProps</li>
+                    <li>shouldComponentUpdate</li>
+                    <li>componentWillUpdate</li>
+                    <li>render</li>
+                    <li>componentDidUpdate</li>
+                </ul>
+            </div>
+            <div class="right_col" style="width: 40%; margin-top: 60px;">
+                <img style="width: 300px; height: 300px;" src="pictures/icons/update.png">
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #17 -->
+    <section class="slide">
+        <h2>shouldComponentUpdate</h2>
+        <pre style="font-size: 22px;width: 100%;" class="language-javascript">
+            <code style="width: 100%;">
+              class MyComponent extends React.Component {
+                ...
+                shouldComponentUpdate(nextPros, nextState) {
+                  const hasPropsChanged = shallowEqual(nextProps, this.props);
+                  const hasStateChanged = shallowEqual(nextState, this.state);
+                  return !hasPropsChanged && !hasStateChanged;
+                }
+                ...
+              }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2 style="display: none;">APPLICATION WITH SCU</h2>
+        <div style="text-align: center; font-size: 100px;"><a style="color:#000;" href="http://g3f4.xyz/optimizing-react/scu/">APPLICATION WITH SCU</a></div>
+    </section>
+
+    <!-- SLIDE #18 -->
+    <section class="slide">
+        <h2>HOW NOT TO USE IT</h2>
+        <div class="wrap">
+          <div class="left_col" style="width: 60%;">
+                <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
+                    <li class="next">MUTATING STATE DIRECTLY</li>
+                    <li class="next">PROPS BINGING FUNCTIONS</li>
+                    <li class="next">DON'T USE EVERYWHERE</li>
+                </ul>
+            </div>
+            <div class="right_col" style="width: 40%;">
+                <img style="width: 300px; height: 300px;" src="pictures/icons/no.png">
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #19 -->
+    <section class="slide" style="padding-top: 100px;">
+        <h2 style="display: none;">IMMUTABILITY</h2>
+        <div class="wrap">
+            <div class="left_col" style="width: 40%; margin-top: 50px;">
+                <img style="width: 300px;height: 300px;" src="pictures/question-mark.png">
+            </div>
+            <div class="right_col" style="width: 60%;">
+                <div style="font-size: 72px;font-weight: bold;">MUTABILITY</div>
+                <div style="font-size: 72px;font-weight: bold;">VS</div>
+                <div style="font-size: 72px;font-weight: bold;">IMMUTABILITY</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #20 -->
+    <section class="slide">
+        <h2>MUTABLE STRUCTURES AND REACT</h2>
+        <div class="wrap">
+          <div class="left_col" style="width: 60%;">
+            <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
+              <li class="next">IT'S HARD TO DETERMINE WHAT HAVE CHANGED</li>
+              <li class="next">ASSERTING DEEP STRUCTURES IS EXPENSIVE</li>
+              <li class="next">USING REFERENCES CAN LEAD TO ERRORS</li>
+            </ul>
+          </div>
+          <div class="right_col" style="width: 40%; margin-top: 50px;">
+            <img style="width: 300px; height: 300px; margin-left: 40px;" src="pictures/icons/mutable.png">
+          </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #21 -->
+    <section class="slide">
+        <h2>WHY IMMUTABLE STRUCTURES</h2>
+        <div class="wrap">
+          <div class="left_col" style="width: 45%;">
+            <img style="width: 300px; height: 300px;" src="pictures/icons/clone.png">
+          </div>
+          <div class="right_col" style="width: 55%;">
+            <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
+                <li class="next">STATE IS READ-ONLY</li>
+                <li class="next">UPDATING STATE CREATE NEW STATE</li>
+                <li class="next">SIMPLER BUGS TRACING</li>
+                <li class="next">STATE HISTORY</li>
+            </ul>
+          </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #22 -->
+    <section class="slide">
+        <h2>immutability-helper</h2>
+        <ul style="font-size: 35px;font-weight: bold;">
+            <li class="next">OPTIMIZE UPDATE</li>
+            <li class="next">SYNTACTIC SUGAR</li>
+        </ul>
+        <pre style="font-size: 24px;width: 100%;" class="next language-javascript">
+            <code style="width: 100%;">
+                import update from 'immutability-helper';
+                const newData = update(myData, {
+                  x: { y: {z: { $set: 7 } } },
+                  a: { b: { $push: [9] } }
+                });
+            </code>
+        </pre>
+    </section>
+
+    <!-- SLIDE #23 -->
+    <section class="slide">
+      <h2>immutability-helper - commands</h2>
+      <ul style="font-size: 30px;font-weight: bold;">
+        <li>{$push: []} push items into array</li>
+        <li>{$unshift: []} unshift() items into array</li>
+        <li>{$splice: [[], ...]} splice items from array</li>
+        <li>{$set: any} set value</li>
+        <li>{$unset: ['', ...]} remove items from array by keys</li>
+        <li>{$merge: {}} shallow merge object</li>
+        <li>{$apply: value=>value} function get value and return new value</li>
+      </ul>
+      <h3>https://www.npmjs.com/package/immutability-helper</h3>
+    </section>
+
+    <!-- SLIDE #24 -->
+    <section class="slide" style="padding-top: 150px;">
+        <h2 style="display: none;">MEMOIZATION</h2>
+        <div class="wrap">
+            <div class="left_col" style="width: 45%;">
+                <img style="width: 300px;height: 300px;" src="pictures/icons/memory.png">
+            </div>
+            <div class="right_col" style="width: 55%; margin-top: 80px;">
+                <div style="font-size: 72px;font-weight: bold;">MEMOIZATION</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #25 -->
+    <section class="slide">
+        <h2>WHAT IS MEMOIZATION?</h2>
+        <div class="wrap">
+          <div class="left_col" style="width: 70%;">
+            <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
+                <li class="next">FUNCTION WITH MEMORY</li>
+                <li class="next">TIME-SPACE TRADE-OFF</li>
+                <li class="next">REFERENTIAL TRANSPARENCY(PURE)</li>
+            </ul>
+          </div>
+          <div class="right_col" style="width: 30%;">
+            <img style="width: 300px; height: 300px;" src="pictures/icons/memory.png">
+          </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #26 -->
+    <section class="slide">
+      <h2>MOIZE</h2>
+      <h3>https://www.npmjs.com/package/moize</h3>
+      <pre style="font-size: 24px;width: 100%;" class="next language-javascript">
+        <code style="width: 100%;">
+            import moize from 'moize';
+            const method = (a, b) => {
+              return a + b;
+            };
+            const memoized = moize(method);
+            memoized(2, 4); // 6
+            memoized(2, 4); // 6, pulled from cache
+        </code>
+      </pre>
+    </section>
+
+
+    <!-- SLIDE #27 -->
+    <section class="slide">
+      <h2>MOIZE AND REACT</h2>
+      <div class="wrap">
+        <div class="left_col" style="width: 70%;">
+          <pre style="font-size: 24px;width: 100%;" class="next language-javascript">
+            <code style="width: 100%;">
+                import moize from 'moize';
+                const Foo = ({bar, baz}) => {
+                  return (
+                    < div>
+                      {bar} {baz}
+                    < /div>
+                  );
+                };
+                export default moize.react(Foo);
+            </code>
+          </pre>
+        </div>
+        <div class="right_col" style="width: 30%; margin-top: 80px;">
+          <img style="width: 300px; height: 300px;" src="pictures/logo/react.png">
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+        <h2 style="display: none;">APPLICATION WITH SCU AND MEMOIZATION</h2>
+        <div style="text-align: center; font-size: 100px;"><a style="color:#000;" href="http://g3f4.xyz/optimizing-react/memoized/">APPLICATION WITH SCU AND MEMOIZATION</a></div>
+    </section>
+
+    <!-- SLIDE #28 -->
+    <section class="slide">
+        <h2>WHAT MORE?</h2>
+        <div class="wrap">
+          <div class="left_col" style="width: 70%;">
+                <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
+                  <li class="next">REMEMBER ABOUT PRODUCTION BUILD</li>
+                  <li class="next">WEBPACK PLUGINS</li>
+                  <li class="next">REACT ALTERNATIVES</li>
+                </ul>
+            </div>
+            <div class="right_col" style="width: 30%;">
+                <img style="width: 300px; height: 300px;" src="pictures/icons/brainbulb.png">
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #29 -->
+    <section class="slide">
+        <h2>FINAL THOUGHTS</h2>
+        <div class="wrap">
+          <div class="left_col" style="width: 70%;">
+                <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
+                    <li class="next">DON'T OPTIMIZE PREMATURELY</li>
+                    <li class="next">RENDER LOGIC COSTS TIME</li>
+                    <li class="next">USE IMMUTABLE STRUCTURES AND PURE FUNCTIONS</li>
+                </ul>
+            </div>
+            <div class="right_col" style="width: 30%;">
+                <img style="width: 300px; height: 300px;" src="pictures/icons/thought.png">
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #RESOURCES -->
+    <section class="slide">
+        <h2>RESOURCES</h2>
+        <ul>
+            <li>http://g3f4.xyz/optimizing-react/</li>
+            <li>https://github.com/G3F4/optimizing-react</li>
+            <li>https://www.npmjs.com/package/immutability-helper</li>
+            <li>https://www.npmjs.com/package/moize</li>
+            <li>https://facebook.github.io/react/docs/</li>
+            <li>https://www.accelebrate.com/blog/the-real-benefits-of-the-virtual-dom-in-react-js/</li>
+        </ul>
+    </section>
+
+    <!-- SLIDE #LAST -->
+    <section class="slide">
+        <h1 class="shout">THANKS FOR<br />LISTENING. QUESTIONS?</h1>
+    </section>
+
+    <div class="progress"></div>
+
+    <script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2017 Kamil Grabek -->
+</body>
+</html>
