@@ -115,14 +115,15 @@
     <h2 style="display: inline;margin-left: 30px;font-size: 72px;">Kamil Grabek</h2>
 
     <!-- 3. Presentation title -->
-    <h2 style="padding-top: 30px;"><strong>"React at 60 FPS - Optimizing React"</strong></h2>
+    <h3 style="padding-top: 20px;"><strong>"React at 60 FPS - Optimizing React"</strong></h3>
 
     <!-- 4. Presentation date -->
-    <h2>2017-09-30</h2>
+    <h3>2018-11-28</h3>
 
     <!-- 5. Contact the speaker -->
-    <h2>github.com/G3F4</h2>
-    <h2>kamil.grabek@gmail.com</h2>
+    <img src="pictures/brt-logo.png" />
+    <h3>github.com/G3F4</h3>
+    <h3>kamil.grabek@gmail.com</h3>
   </div>
 </section>
 
@@ -171,7 +172,7 @@
 </section>
 
 <section class="slide">
-  <h2 style="display: none;">UNOPTIMIZED APPLICATION</h2>
+  <h2 style="display: none;">Unoptimized application</h2>
   <div style="text-align: center; font-size: 100px;">
     <a style="color:#000;" href="http://g3f4.xyz/optimizing-react/unoptimized/">UNOPTIMIZED APPLICATION</a>
   </div>
@@ -277,17 +278,18 @@
 
 <!-- SLIDE #11 -->
 <section class="slide">
-  <h2>?REACT_PERF + DEV TOOLS TIMELINE</h2>
+  <h2>PROFILING REACT APP</h2>
   <ul style="margin-bottom: 0px;font-size: 30px;font-weight: bold; margin-top: 0px;">
-    <li class="next">SINCE REACT v15.4.0. USE: http://localhost:3000/?react_perf</li>
+    <li class="next">SINCE REACT v16.5.* with React DevTools extension</li>
   </ul>
-  <img class="next" style="margin-left: 80px" src="pictures/react-perf.png">
+  <img class="next" style="" src="pictures/props-and-state.gif">
+  <img class="next" style="" src="pictures/props-and-state.gif">
 </section>
 
 <!-- SLIDE #12 -->
 <section class="slide img_slide">
   <h2 style="margin: 435px 0 0;font-size: 120px;color: rgb(39, 12, 12);">COMPOSITION</h2>
-  <img src="pictures/blocks.png" alt="" class="cover">
+  <img src="pictures/blocks.png" alt="" class="cover" style="padding-bottom: 170px;padding-left: 70px;padding-right: 70px;padding-top: 20px;">
 </section>
 
 <!-- SLIDE #13 -->
@@ -394,11 +396,24 @@
         </pre>
 </section>
 
+<!-- SLIDE #17 -->
 <section class="slide">
-  <h2 style="display: none;">APPLICATION WITH SCU</h2>
-  <div style="text-align: center; font-size: 100px;"><a style="color:#000;"
-                                                        href="http://g3f4.xyz/optimizing-react/scu/">APPLICATION WITH
-    SCU</a></div>
+  <h2>PureComponent</h2>
+  <pre style="height: 50%;font-size: 22px;width: 100%;" class="language-javascript">
+            <code style="width: 100%;"> class MyComponent extends React.PureComponent {
+   render() {
+      ...
+   }
+ }
+            </code>
+        </pre>
+</section>
+
+<section class="slide">
+  <h2 style="display: none;">Application with PureComponent</h2>
+  <div style="text-align: center; font-size: 100px;">
+    <a style="color:#000;"href="http://g3f4.xyz/optimizing-react/scu/">PureComponent App</a>
+  </div>
 </section>
 
 <!-- SLIDE #18 -->
@@ -479,17 +494,16 @@
 
 <!-- SLIDE #23 -->
 <section class="slide">
-  <h2>immutability-helper - commands</h2>
-  <ul style="font-size: 30px;font-weight: bold;">
-    <li>{$push: []} push items into array</li>
-    <li>{$unshift: []} unshift() items into array</li>
-    <li>{$splice: [[], ...]} splice items from array</li>
-    <li>{$set: any} set value</li>
-    <li>{$unset: ['', ...]} remove items from array by keys</li>
-    <li>{$merge: {}} shallow merge object</li>
-    <li>{$apply: value=>value} function get value and return new value</li>
+  <h2>Immutable.js</h2>
+  <ul style="font-size: 35px;font-weight: bold;">
+    <li class="next">Ready to use immutable structures</li>
+    <li class="next">https://facebook.github.io/immutable-js/</li>
   </ul>
-  <h3>https://www.npmjs.com/package/immutability-helper</h3>
+  <pre style="font-size: 24px;width: 100%;" class="next language-javascript">
+            <code style="width: 100%;"> const list = Immutable.List.of('apple');
+ const newList = list.push('banana');
+            </code>
+        </pre>
 </section>
 
 <!-- SLIDE #24 -->
@@ -559,11 +573,29 @@
   </div>
 </section>
 
+<!-- SLIDE #27 -->
 <section class="slide">
-  <h2 style="display: none;">APPLICATION WITH SCU AND MEMOIZATION</h2>
-  <div style="margin-top: -40px;text-align: center; font-size: 100px;"><a style="color:#000;"
-                                                                          href="http://g3f4.xyz/optimizing-react/memoized/">APPLICATION
-    WITH SCU AND MEMOIZATION</a></div>
+  <h2>React.Memo</h2>
+  <ul style="margin-bottom: 0px;font-size: 30px;font-weight: bold; margin-top: 0px;">
+    <li class="next">SINCE REACT v16.6.*</li>
+  </ul>
+  <div class="wrap">
+          <pre style="height: 38%;font-size: 24px;width: 100%;" class="next language-javascript">
+            <code style="width: 100%;"> const Component = React.memo((props) => {
+    /* only rerenders if props change */
+ });
+            </code>
+          </pre>
+    </div>
+</section>
+
+<section class="slide">
+  <h2 style="display: none;">Pure and memoized App</h2>
+  <div style="margin-top: -40px;text-align: center; font-size: 100px;">
+    <a style="color:#000;"href="http://g3f4.xyz/optimizing-react/memoized/">
+      Pure and memoized application
+    </a>
+  </div>
 </section>
 
 <!-- SLIDE #28 -->
@@ -617,6 +649,7 @@
     <li>https://www.npmjs.com/package/immutability-helper</li>
     <li>https://www.npmjs.com/package/moize</li>
     <li>https://facebook.github.io/react/docs/ (React documentation)</li>
+    <li>https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html(Profiling post)</li>
     <li>https://www.accelebrate.com/blog/the-real-benefits-of-the-virtual-dom-in-react-js/</li>
     <li>https://github.com/facebook/react/issues/3228 (Inline ReactElements)</li>
     <li>https://github.com/facebook/react/issues/3226 (Reuse Constant Value Types like ReactElement)</li>
@@ -627,12 +660,13 @@
 
 <!-- SLIDE #LAST -->
 <section class="slide">
+  <img src="pictures/brt-logo.png" />
   <h1 class="shout">THANKS FOR<br/>LISTENING. QUESTIONS?</h1>
 </section>
 
 <div class="progress"></div>
 
 <script src="shower/shower.min.js"></script>
-<!-- Copyright © 2017 Kamil Grabek -->
+<!-- Copyright © 2018 Kamil Grabek -->
 </body>
 </html>
