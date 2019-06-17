@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <title>React at 60 FPS - Optimizing React</title>
+  <title>React at 60 FPS - Optimizing performance</title>
 
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -19,12 +19,18 @@
       float: left;
       width: 50%;
       height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .right_col {
       float: right;
       width: 50%;
       height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .slide .shout {
@@ -102,7 +108,7 @@
 </head>
 <body class="shower list">
 <header class="caption">
-  <h1>React at 60 FPS - Optimizing React</h1>
+  <h1>React at 60 FPS - Optimizing performance</h1>
 </header>
 
 <!-- SLIDE #1 -->
@@ -115,13 +121,12 @@
     <h2 style="display: inline;margin-left: 30px;font-size: 72px;">Kamil Grabek</h2>
 
     <!-- 3. Presentation title -->
-    <h3 style="padding-top: 20px;"><strong>"React at 60 FPS - Optimizing React"</strong></h3>
+    <h3 style="padding-top: 20px;"><strong>"React at 60 FPS - Optimizing performance"</strong></h3>
 
     <!-- 4. Presentation date -->
-    <h3>2018-11-28</h3>
+    <h3>2019-06-24</h3>
 
     <!-- 5. Contact the speaker -->
-    <img src="pictures/brt-logo.png" />
     <h3>github.com/G3F4</h3>
     <h3>kamil.grabek@gmail.com</h3>
   </div>
@@ -174,7 +179,7 @@
 <section class="slide">
   <h2 style="display: none;">Unoptimized application</h2>
   <div style="text-align: center; font-size: 100px;">
-    <a style="color:#000;" href="http://g3f4.xyz/optimizing-react/unoptimized/">UNOPTIMIZED APPLICATION</a>
+    <a style="color:#000;" href="https://g3f4.github.io/optimizing-react/">UNOPTIMIZED APPLICATION</a>
   </div>
 </section>
 
@@ -201,7 +206,7 @@
 
 <!-- SLIDE #5 -->
 <section class="slide">
-  <h2>WHAT IS OUR GOAL OPTIMIZATION</h2>
+  <h2>OPTIMIZATIONS GOAL</h2>
   <div class="wrap">
     <div class="left_col" style="width: 40%;">
       <img style="width: 300px; height: 300px;" src="pictures/icons/goal.png">
@@ -211,6 +216,7 @@
         <li class="next">FLUID ANIMATIONS</li>
         <li class="next">FAST FORMS</li>
         <li class="next">60 FPS</li>
+        <li class="next">REACTIVE EXPERIENCE</li>
       </ul>
     </div>
   </div>
@@ -218,13 +224,13 @@
 
 <!-- SLIDE #6 -->
 <section class="slide">
-  <h2>WHEN START OPTIMIZATION</h2>
+  <h2>WHEN START OPTIMIZING</h2>
   <div class="wrap">
     <div class="left_col" style="width: 70%;">
       <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
         <li class="next">NOT AT THE BEGINNING</li>
-        <li class="next">WHEN SLOWER DEVICES MATTER</li>
         <li class="next">ENCOUNTERING BOTTLE NECKS</li>
+        <li class="next">WHEN SLOWER DEVICES MATTER</li>
       </ul>
     </div>
     <div class="right_col" style="width: 30%;">
@@ -241,39 +247,19 @@
 
 <!-- SLIDE #8 -->
 <section class="slide">
-  <h2>USING CONSOLE IN RENDER METHOD</h2>
-  <pre style="height: 75%;font-size: 22px;width: 100%;" class="language-javascript">
-            <code style="width: 100%;">    class MyComponent extends React.Component {
-    ...
+  <h2>USING CONSOLE IN RENDER</h2>
+  <pre style="height: 70%;font-size: 22px;width: 100%;" class="language-javascript">
+    <code style="width: 100%;"> class MyComponent extends React.Component {
     render() {
-      console.log(`Rendering ${this.constructor.name}`);
+      console.log('Rendering MyComponent');
+
       return (
         < div>...< /div>
       );
     }
-    ...
-    }
-            </code>
-        </pre>
-</section>
-
-<!-- SLIDE #9 -->
-<section class="slide">
-  <h2>WHY-DID-YOU-UPDATE</h2>
-  <img style="" src="pictures/why-did-you-update.png">
-  <h3>https://github.com/garbles/why-did-you-update</h3>
-</section>
-
-<!-- SLIDE #10 -->
-<section class="slide" style="padding-top: 40px;">
-  <h2>REACT PERFORMANCE TOOLS</h2>
-  <h3>WASTED OPERATIONS</h3>
-  <img style="zoom: 1.2;" src="pictures/perf-wasted.png">
-  <h3>TIME SPENT PROCESSING COMPONENTS</h3>
-  <img style="zoom: 1.2;" src="pictures/perf-inclusive.png">
-  <h3>DOM OPERATIONS PERFORMED</h3>
-  <img style="zoom: 1.2;" src="pictures/perf-dom.png">
-  <h3>https://facebook.github.io/react/docs/perf.html</h3>
+ }
+    </code>
+  </pre>
 </section>
 
 <!-- SLIDE #11 -->
@@ -283,8 +269,14 @@
     <li class="next">SINCE REACT v16.5.* with React DevTools extension</li>
   </ul>
   <img class="next" style="" src="pictures/props-and-state.gif">
-  <img class="next" style="" src="pictures/props-and-state.gif">
 </section>
+
+<!-- SLIDE #9 -->
+<section class="slide">
+  <h2>HIGHLIGHT UPDATES</h2>
+  <img style="width: 800px; height: 400px;" src="pictures/highlights.png">
+</section>
+
 
 <!-- SLIDE #12 -->
 <section class="slide img_slide">
@@ -362,9 +354,8 @@
   <div class="wrap">
     <div class="left_col" style="width: 60%;">
       <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
-        <li>componentWillReceiveProps</li>
+        <li>getDerivedStateFromProps</li>
         <li>shouldComponentUpdate</li>
-        <li>componentWillUpdate</li>
         <li>render</li>
         <li>componentDidUpdate</li>
       </ul>
@@ -380,8 +371,7 @@
   <h2>shouldComponentUpdate</h2>
   <pre style="height: 83%;font-size: 22px;width: 100%;" class="language-javascript">
             <code style="width: 100%;"> class MyComponent extends React.Component {
-   ...
-   shouldComponentUpdate(nextPros, nextState) {
+   shouldComponentUpdate(nextPros, nextState, nextContext) {
      const hasPropsChanged = shallowEqual(
                    nextProps,
                    this.props);
@@ -390,7 +380,6 @@
                    this.state);
      return !hasPropsChanged && !hasStateChanged;
    }
-   ...
  }
             </code>
         </pre>
@@ -398,27 +387,24 @@
 
 <!-- SLIDE #17 -->
 <section class="slide">
-  <h2>PureComponent</h2>
-  <pre style="height: 50%;font-size: 22px;width: 100%;" class="language-javascript">
-            <code style="width: 100%;"> class MyComponent extends React.PureComponent {
+  <h2>React PureComponent and memo</h2>
+  <pre style="height: 70%;font-size: 22px;width: 100%;" class="language-javascript">
+            <code style="width: 100%;"> // class style
+ class MyComponent extends React.PureComponent {
    render() {
       ...
    }
  }
+
+ // or with functional components
+ const MyComponent = memo(props => (...));
             </code>
         </pre>
 </section>
 
-<section class="slide">
-  <h2 style="display: none;">Application with PureComponent</h2>
-  <div style="text-align: center; font-size: 100px;">
-    <a style="color:#000;"href="http://g3f4.xyz/optimizing-react/scu/">PureComponent App</a>
-  </div>
-</section>
-
 <!-- SLIDE #18 -->
 <section class="slide">
-  <h2>HOW NOT TO USE IT</h2>
+  <h2>BAD PRACTICES</h2>
   <div class="wrap">
     <div class="left_col" style="width: 60%;">
       <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
@@ -432,6 +418,14 @@
     </div>
   </div>
 </section>
+
+<section class="slide">
+  <h2 style="display: none;">Application with pure components</h2>
+  <div style="text-align: center; font-size: 100px;">
+    <a style="color:#000;"href="https://g3f4.github.io/optimizing-react/">Application with pure components</a>
+  </div>
+</section>
+
 
 <!-- SLIDE #19 -->
 <section style="padding-left: 20px;padding-right: 20px;" class="slide img_slide">
@@ -484,10 +478,10 @@
   </ul>
   <pre style="font-size: 24px;width: 100%;" class="next language-javascript">
             <code style="width: 100%;"> import update from 'immutability-helper';
-  const newData = update(myData, {
-    x: { y: {z: { $set: 7 } } },
-    a: { b: { $push: [9] } }
-  });
+ const newData = update(myData, {
+   x: { y: {z: { $set: 7 } } },
+   a: { b: { $push: [9] } }
+ });
             </code>
         </pre>
 </section>
@@ -531,6 +525,44 @@
 
 <!-- SLIDE #26 -->
 <section class="slide">
+  <h2>React hook - useMemo</h2>
+  <pre style="height: 74%;font-size: 23px;width: 100%;" class="next language-javascript">
+        <code style="width: 100%;"> const expensiveCalc = length =>
+  Array.from({ length }, (_v, k) => k).map(expensiveCalc);
+
+  // inside functional component
+  const { calculationsCost } = props;
+
+  useMemo(() => {
+    expensiveCalc(calculationsCost);
+  }, [calculationsCost]);
+        </code>
+      </pre>
+</section>
+
+<!-- SLIDE #27 -->
+<section class="slide">
+  <h2>React.Memo</h2>
+  <ul style="margin-bottom: 0px;font-size: 30px;font-weight: bold; margin-top: 0px;">
+    <li class="next">SINCE REACT v16.6.*</li>
+  </ul>
+  <div class="wrap">
+          <pre style="height: 100%;font-size: 24px;width: 100%;" class="next language-javascript">
+            <code style="width: 100%;"> import { memo } from 'react';
+
+  const Foo = ({bar, baz}) => {
+    return (
+      < div>{bar} {baz}< /div>
+    );
+  };
+  export default memo(Foo);
+            </code>
+          </pre>
+    </div>
+</section>
+
+<!-- SLIDE #26 -->
+<section class="slide">
   <h2>MOIZE</h2>
   <h3>https://www.npmjs.com/package/moize</h3>
   <pre style="height: 74%;font-size: 24px;width: 100%;" class="next language-javascript">
@@ -552,15 +584,13 @@
 <section class="slide">
   <h2>MOIZE AND REACT</h2>
   <div class="wrap">
-    <div class="left_col" style="width: 70%;">
-          <pre style="height: 118%;font-size: 24px;width: 100%;" class="next language-javascript">
+    <div class="left_col" style="width: 65%;">
+          <pre style="height: 100%;font-size: 24px;width: 100%;" class="next language-javascript">
             <code style="width: 100%;">  import moize from 'moize';
 
   const Foo = ({bar, baz}) => {
     return (
-      < div>
-        {bar} {baz}
-      < /div>
+      < div>{bar} {baz}< /div>
     );
   };
   export default moize.react(Foo);
@@ -573,26 +603,10 @@
   </div>
 </section>
 
-<!-- SLIDE #27 -->
-<section class="slide">
-  <h2>React.Memo</h2>
-  <ul style="margin-bottom: 0px;font-size: 30px;font-weight: bold; margin-top: 0px;">
-    <li class="next">SINCE REACT v16.6.*</li>
-  </ul>
-  <div class="wrap">
-          <pre style="height: 38%;font-size: 24px;width: 100%;" class="next language-javascript">
-            <code style="width: 100%;"> const Component = React.memo((props) => {
-    /* only rerenders if props change */
- });
-            </code>
-          </pre>
-    </div>
-</section>
-
 <section class="slide">
   <h2 style="display: none;">Pure and memoized App</h2>
   <div style="margin-top: -40px;text-align: center; font-size: 100px;">
-    <a style="color:#000;"href="http://g3f4.xyz/optimizing-react/memoized/">
+    <a style="color:#000;"href="https://g3f4.github.io/optimizing-react/">
       Pure and memoized application
     </a>
   </div>
@@ -603,7 +617,7 @@
   <h2>WHAT MORE?</h2>
   <div class="wrap">
     <div class="left_col" style="width: 74%;">
-      <ul style="font-size: 35px;font-weight: bold;">
+      <ul style="font-size: 35px;font-weight: bold; margin-bottom: 0;">
         <li class="next">REMEMBER ABOUT PRODUCTION  BUILD</li>
         <li class="next">WEBPACK  PLUGINS</li>
         <ul style="font-size: 30px;font-weight:  bold;">
@@ -627,10 +641,10 @@
 <section class="slide">
   <h2>FINAL THOUGHTS</h2>
   <div class="wrap">
-    <div class="left_col" style="width: 70%;">
+    <div class="left_col" style="width: 60%;">
       <ul style="font-size: 35px;font-weight: bold; margin-top: 25px;">
         <li class="next">DON'T OPTIMIZE PREMATURELY</li>
-        <li class="next">RENDER LOGIC COSTS TIME</li>
+        <li class="next">CONTROL RENDER TREE WITH COMPOSITION</li>
         <li class="next">USE IMMUTABLE STRUCTURES AND PURE FUNCTIONS</li>
       </ul>
     </div>
@@ -660,7 +674,6 @@
 
 <!-- SLIDE #LAST -->
 <section class="slide">
-  <img src="pictures/brt-logo.png" />
   <h1 class="shout">THANKS FOR<br/>LISTENING. QUESTIONS?</h1>
 </section>
 
