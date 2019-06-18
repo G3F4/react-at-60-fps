@@ -15,6 +15,12 @@
       height: 70%;
     }
 
+    .copy {
+      position: absolute;
+      bottom: 8px;
+      font-size: 10px;
+    }
+
     .left_col {
       float: left;
       width: 50%;
@@ -192,16 +198,19 @@
 <section class="slide img_slide">
   <h2 style="margin: 20px 0 0;font-size: 42px;color: rgb(39, 12, 12);">WHAT CHANGED?</h2>
   <img src="pictures/reconcillation1.jpg" alt="" class="cover">
+  <div class="copy">https://www.toptal.com/react/optimizing-react-performance</div>
 </section>
 
 <section class="slide img_slide">
   <h2 style="margin: 20px 0 0;font-size: 42px;color: rgb(39, 12, 12);">WHAT REACT WOULD NORMALLY DO?</h2>
   <img src="pictures/reconcillation2.jpg" alt="" class="cover">
+  <div class="copy">https://www.toptal.com/react/optimizing-react-performance</div>
 </section>
 
 <section class="slide img_slide">
   <h2 style="margin: 20px 0 0;font-size: 42px;color: rgb(39, 12, 12);">WHAT REACT SHOULD DO?</h2>
   <img src="pictures/reconcillation3.jpg" alt="" class="cover">
+  <div class="copy">https://www.toptal.com/react/optimizing-react-performance</div>
 </section>
 
 <!-- SLIDE #5 -->
@@ -254,11 +263,10 @@
       console.log('Rendering MyComponent');
 
       return (
-        < div>...< /div>
+        &lt;div>...&lt;/div>
       );
     }
- }
-    </code>
+ }</code>
   </pre>
 </section>
 
@@ -278,10 +286,17 @@
 </section>
 
 
+<!-- SLIDE #9 -->
+<section class="slide">
+  <h2>HIGHLIGHT UPDATES</h2>
+  <img style="width: 800px; height: 400px;" src="pictures/highlights2.png">
+</section>
+
+
 <!-- SLIDE #12 -->
 <section class="slide img_slide">
   <h2 style="margin: 435px 0 0;font-size: 120px;color: rgb(39, 12, 12);">COMPOSITION</h2>
-  <img src="pictures/blocks.png" alt="" class="cover" style="padding-bottom: 170px;padding-left: 70px;padding-right: 70px;padding-top: 20px;">
+  <img src="pictures/blocks.png" alt="" style="width: 70%; height: 70%; margin-top: -80px;" class="cover" style="padding-bottom: 170px;padding-left: 70px;padding-right: 70px;padding-top: 20px;">
 </section>
 
 <!-- SLIDE #13 -->
@@ -305,22 +320,21 @@
 <section class="slide" style="padding-top: 30px;">
   <h2>MAKING TEMPLATES WRONG WAY</h2>
   <div class="wrap" style="margin-top: 30px;">
-    <div class="left_col" style="width: 40%; margin-top: 50px;">
-      <img style="width: 300px;height: 300px;margin-top: 40px;" src="pictures/icons/bad.png">
+    <div class="left_col" style="width: 30%;">
+      <img style="width: 200px;height: 200px;" src="pictures/icons/bad.png">
     </div>
     <div class="right_col" style="width: 60%;">
                 <pre style="font-size: 22px;width: 100%;" class="language-javascript">
-                    <code style="width: 100%;"> < div>
+                    <code style="width: 100%;"> &lt;div>
  {invitations.map(invitation => (
-   < div
+   &lt;div
     key={invitation.id}
-    < div>{invitation.number}< /div>
+    &lt;div>{invitation.number}&lt;/div>
     ...
    />
  ))}
- < /div>
-                  </code>
-                </pre>
+ &lt;/div></code>
+      </pre>
     </div>
   </div>
 </section>
@@ -331,19 +345,19 @@
   <div class="wrap" style="margin-top: 30px;">
     <div class="left_col" style="width: 65%;">
               <pre style="font-size: 22px;width: 100%;" class="language-javascript">
-                <code style="width: 100%;"> < div>
+                <code style="width: 100%;"> &lt;div>
  {invitations.map(invitation => (
-   < Invitation
+   &lt;Invitation
      key={invitation.id}
-     {...getInvitationProps(invitation)}
+     data={invitation}
+     onUpdate={this.handleUpdate}
    />
  ))}
- < /div>
-                </code>
+ &lt;/div></code>
               </pre>
     </div>
-    <div class="right_col" style="width: 35%; padding-left: 30px;">
-      <img style="width: 300px;height: 300px;margin-top: 40px;" src="pictures/icons/good.png">
+    <div class="right_col" style="width: 25%; padding-left: 30px;">
+      <img style="width: 200px;height: 200px;" src="pictures/icons/good.png">
     </div>
   </div>
 </section>
@@ -380,8 +394,7 @@
                    this.state);
      return !hasPropsChanged && !hasStateChanged;
    }
- }
-            </code>
+ }</code>
         </pre>
 </section>
 
@@ -397,8 +410,7 @@
  }
 
  // or with functional components
- const MyComponent = memo(props => (...));
-            </code>
+ const MyComponent = memo(props => (...));</code>
         </pre>
 </section>
 
@@ -422,7 +434,7 @@
 <section class="slide">
   <h2 style="display: none;">Application with pure components</h2>
   <div style="text-align: center; font-size: 100px;">
-    <a style="color:#000;"href="https://g3f4.github.io/optimizing-react/">Application with pure components</a>
+    <a style="color:#000;"href="https://g3f4.github.io/optimizing-react/?pure=true">Application with pure components</a>
   </div>
 </section>
 
@@ -455,7 +467,7 @@
 <section class="slide">
   <h2>WHY IMMUTABLE STRUCTURES</h2>
   <div class="wrap">
-    <div class="left_col" style="width: 45%;">
+    <div class="left_col" style="width: 30%;">
       <img style="width: 300px; height: 300px;" src="pictures/icons/clone.png">
     </div>
     <div class="right_col" style="width: 55%;">
@@ -471,18 +483,20 @@
 
 <!-- SLIDE #22 -->
 <section class="slide">
-  <h2>immutability-helper</h2>
+  <h2>immer</h2>
   <ul style="font-size: 35px;font-weight: bold;">
-    <li class="next">OPTIMIZE UPDATE</li>
-    <li class="next">SYNTACTIC SUGAR</li>
+    <li class="next">PLAIN, NATIVE JS DATA STRUCTURES</li>
   </ul>
-  <pre style="font-size: 24px;width: 100%;" class="next language-javascript">
-            <code style="width: 100%;"> import update from 'immutability-helper';
- const newData = update(myData, {
-   x: { y: {z: { $set: 7 } } },
-   a: { b: { $push: [9] } }
- });
-            </code>
+  <pre style="font-size: 22px;width: 100%;" class="next language-javascript">
+            <code style="width: 100%;"> import produce from "immer"
+ const baseState = [{
+   fruit: "Banana",
+   favourite: false,
+ }];
+ const nextState = produce(baseState, draftState => {
+   draftState.push({ fruit: "Tweet about it" });
+   draftState[1].favourite = true;
+ });</code>
         </pre>
 </section>
 
@@ -490,13 +504,17 @@
 <section class="slide">
   <h2>Immutable.js</h2>
   <ul style="font-size: 35px;font-weight: bold;">
-    <li class="next">Ready to use immutable structures</li>
-    <li class="next">https://facebook.github.io/immutable-js/</li>
+    <li class="next">IMMUTABLE COLLECTIONS FOR JS</li>
   </ul>
   <pre style="font-size: 24px;width: 100%;" class="next language-javascript">
-            <code style="width: 100%;"> const list = Immutable.List.of('apple');
- const newList = list.push('banana');
-            </code>
+            <code style="width: 100%;"> const baseState = Immutable.List.of({
+   fruit: "Try immer",
+   favourite: false,
+ });
+ const nextState = list.push({
+   fruit: "Banana",
+   favourite: false,
+ });</code>
         </pre>
 </section>
 
@@ -535,8 +553,7 @@
 
   useMemo(() => {
     expensiveCalc(calculationsCost);
-  }, [calculationsCost]);
-        </code>
+  }, [calculationsCost]);</code>
       </pre>
 </section>
 
@@ -552,11 +569,10 @@
 
   const Foo = ({bar, baz}) => {
     return (
-      < div>{bar} {baz}< /div>
+      &lt;div>{bar} {baz}&lt;/div>
     );
   };
-  export default memo(Foo);
-            </code>
+  export default memo(Foo);</code>
           </pre>
     </div>
 </section>
@@ -574,8 +590,7 @@
 
   const memoized = moize(method);
   memoized(2, 4); // 6
-  memoized(2, 4); // 6, pulled from cache
-        </code>
+  memoized(2, 4); // 6, pulled from cache</code>
       </pre>
 </section>
 
@@ -590,11 +605,10 @@
 
   const Foo = ({bar, baz}) => {
     return (
-      < div>{bar} {baz}< /div>
+      &lt;div>{bar} {baz}&lt;/div>
     );
   };
-  export default moize.react(Foo);
-            </code>
+  export default moize.react(Foo);</code>
           </pre>
     </div>
     <div class="right_col" style="width: 30%; margin-top: 80px;">
@@ -606,7 +620,7 @@
 <section class="slide">
   <h2 style="display: none;">Pure and memoized App</h2>
   <div style="margin-top: -40px;text-align: center; font-size: 100px;">
-    <a style="color:#000;"href="https://g3f4.github.io/optimizing-react/">
+    <a style="color:#000;"href="https://g3f4.github.io/optimizing-react/?memo=true&pure=true">
       Pure and memoized application
     </a>
   </div>
@@ -618,17 +632,14 @@
   <div class="wrap">
     <div class="left_col" style="width: 74%;">
       <ul style="font-size: 35px;font-weight: bold; margin-bottom: 0;">
-        <li class="next">REMEMBER ABOUT PRODUCTION  BUILD</li>
-        <li class="next">WEBPACK  PLUGINS</li>
-        <ul style="font-size: 30px;font-weight:  bold;">
-          <li class="next">REUSABLE CONSTANT REACT  ELEMENTS</li>
-          <li class="next">INLINE REACT  ELEMENTS</li>
+        <li class="next">REMEMBER ABOUT PRODUCTION BUILD</li>
+        <li class="next">WEBPACK PLUGINS</li>
+        <ul style="font-size: 30px;font-weight: bold;">
+          <li class="next">REUSABLE CONSTANT REACT ELEMENTS</li>
+          <li class="next">INLINE REACT ELEMENTS</li>
         </ul>
-        <li class="next">REACT  ALTERNATIVES</li>
-        <ul style="font-size: 30px;font-weight:  bold;">
-          <li class="next">PREACT (3kb )</li>
-          <li class="next">INFERNO (9kb )</li>
-        </ul>
+        <li class="next">REACT ALTERNATIVE PREACT</li>
+        <li class="next">LIST AND GRID VIRTUALIZATION</li>
       </ul>
     </div>
     <div class="right_col" style="width: 26%;">
@@ -667,7 +678,7 @@
     <li>https://www.accelebrate.com/blog/the-real-benefits-of-the-virtual-dom-in-react-js/</li>
     <li>https://github.com/facebook/react/issues/3228 (Inline ReactElements)</li>
     <li>https://github.com/facebook/react/issues/3226 (Reuse Constant Value Types like ReactElement)</li>
-    <li>https://github.com/infernojs/inferno</li>
+    <li>https://www.npmjs.com/package/react-virtualized</li>
     <li>https://www.toptal.com/react/optimizing-react-performance</li>
   </ul>
 </section>
