@@ -548,7 +548,7 @@
   // inside functional component
   const { calculationsCost } = props;
 
-  useMemo(() => {
+  const work = useMemo(() => {
     expensiveCalc(calculationsCost);
   }, [calculationsCost]);</code>
       </pre>
